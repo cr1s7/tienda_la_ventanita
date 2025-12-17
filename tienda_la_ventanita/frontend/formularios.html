@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - La Ventanita</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #fff9e6;
+    }
+    .nav-pills .nav-link.active {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+    }
+    .form-section {
+      display: none;
+    }
+    .form-section.active {
+      display: block;
+    }
+    .logout-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-warning text-dark p-3 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center header-content">
+      <h3>🛠️ Panel de Administración</h3>
+      <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div class="container mt-4">
+    <ul class="nav nav-pills mb-3" id="pills-tab">
+      <li class="nav-item">
+        <button class="nav-link active" onclick="showSection('productos')">Productos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" onclick="showSection('categorias')">Categorías</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" onclick="showSection('usuarios')">Usuarios</button>
+      </li>
+    </ul>
+
+    <!-- Productos -->
+    <div id="productos" class="form-section active">
+      <h4>Gestión de Productos</h4>
+      <form id="formProducto" class="mb-3">
+        <input type="text" id="nombreProducto" class="form-control mb-2" placeholder="Nombre del producto">
+        <input type="number" id="precioProducto" class="form-control mb-2" placeholder="Precio">
+        <input type="text" id="categoriaProducto" class="form-control mb-2" placeholder="Categoría">
+        <button type="button" class="btn btn-success w-100" onclick="agregarProducto()">Agregar Producto</button>
+      </form>
+      <ul id="listaProductos" class="list-group"></ul>
+    </div>
+
+    <!-- Categorías -->
+    <div id="categorias" class="form-section">
+      <h4>Gestión de Categorías</h4>
+      <form id="formCategoria" class="mb-3">
+        <input type="text" id="nombreCategoria" class="form-control mb-2" placeholder="Nombre de la categoría">
+        <button type="button" class="btn btn-success w-100" onclick="agregarCategoria()">Agregar Categoría</button>
+      </form>
+      <ul id="listaCategorias" class="list-group"></ul>
+    </div>
+
+    <!-- Usuarios -->
+    <div id="usuarios" class="form-section">
+      <h4>Gestión de Usuarios</h4>
+      <form id="formUsuario" class="mb-3">
+        <input type="text" id="nombreUsuario" class="form-control mb-2" placeholder="Nombre de usuario">
+        <select id="rolUsuario" class="form-select mb-2">
+          <option value="user">Usuario</option>
+          <option value="empleado">Empleado</option>
+        </select>
+        <button type="button" class="btn btn-success w-100" onclick="agregarUsuario()">Agregar Usuario</button>
+      </form>
+      <ul id="listaUsuarios" class="list-group"></ul>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    checkLogin("admin");
+  </script>
+</body>
+</html>
+
