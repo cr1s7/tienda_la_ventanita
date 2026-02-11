@@ -4,29 +4,8 @@
 <meta charset="UTF-8">
 <title>Productos</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="Views/css/styles.css">
 
-<style>
-    body {
-        background: #fffde7; /* Amarillo claro */
-    }
-    .card-custom {
-        background: #fff9c4; /* Más amarillo suave */
-        border-radius: 12px;
-        border: 1px solid #f0e68c;
-    }
-    .table thead {
-        background: #fdd835; /* Amarillo más fuerte */
-        color: #333;
-    }
-    .btn-custom {
-        background: #ffeb3b;
-        color: #333;
-        border: none;
-    }
-    .btn-custom:hover {
-        background: #fdd835;
-    }
-</style>
 </head>
 
 <body>
@@ -92,7 +71,7 @@
                     <td><?= htmlspecialchars($p['marca'] ?? $p['idMarca'] ?? '—') ?></td>
 
                     <td>
-                        <a href="index.php?action=productoEditar&id=<?= $p['idProducto'] ?>" class="btn btn-primary btn-sm">✏ Editar</a>
+                        <a href="index.php?action=productoEditar&id=<?= $p['idProducto'] ?>" class="btn btn-warning">Editar</a>
                         <a href="index.php?action=productoEliminar&id=<?= $p['idProducto'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar producto?')">🗑 Eliminar</a>
                     </td>
                 </tr>

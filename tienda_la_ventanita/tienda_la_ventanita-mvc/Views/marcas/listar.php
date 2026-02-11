@@ -4,22 +4,8 @@
 <meta charset="UTF-8">
 <title>Marcas</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="Views/css/styles.css">
 
-<style>
-    body { background: #fffde7; }
-    .card-custom {
-        background: #fff9c4;
-        border-radius: 12px;
-        border: 1px solid #f0e68c;
-    }
-    .btn-custom {
-        background: #ffeb3b;
-        color: #333;
-    }
-    .btn-custom:hover {
-        background: #fdd835;
-    }
-</style>
 </head>
 
 <body>

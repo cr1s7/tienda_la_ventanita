@@ -66,3 +66,158 @@
             background-color: #3E8C40;
             transform: scale(1.03);
         }
+
+
+
+        /*estilos para el crud de categorias*/
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body {
+        background: #fffde7; /* Amarillo claro */
+        }
+        .card-custom {
+            background: #fff9c4; /* Más amarillo suave */
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+        .table thead {
+            background: #fdd835; /* Amarillo más fuerte */
+            color: #333;
+        }
+        .btn-custom {
+            background: #ffeb3b;
+            color: #333;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: #fdd835;
+        }
+
+        /*estilos para el crud de marcas*/
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+        
+        body { background: #fffde7; }
+        .card-custom {
+            background: #fff9c4;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+        .btn-custom {
+            background: #ffeb3b;
+            color: #333;
+        }
+        .btn-custom:hover {
+            background: #fdd835;
+        }
+
+        /* crud y todo lo relacionado con productos */
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body {
+        background: #fffde7; /* Amarillo claro */
+        }
+        .card-custom {
+            background: #fff9c4; /* Más amarillo suave */
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+        .table thead {
+            background: #fdd835; /* Amarillo más fuerte */
+            color: #333;
+        }
+        .btn-custom {
+            background: #ffeb3b;
+            color: #333;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: #fdd835;
+        }
+
+        /*detalle*/
+
+        /*estilos crud unidades*/
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body { background: #fffde7; }
+        .form-card {
+            background: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+
+        body { background: #fffde7; }
+        .card-custom {
+            background: #fff9c4;
+            border-radius: 12px;
+            border: 1px solid #f0e68c;
+        }
+        .btn-custom {
+            background: #ffeb3b;
+            color: #333;
+        }
+        .btn-custom:hover {
+            background: #fdd835;
+        }
+
+
+
+
+
+
+
+
+

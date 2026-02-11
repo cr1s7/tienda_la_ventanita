@@ -110,4 +110,19 @@ class UserModel
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
     }
+
+    // ================= ACTUALIZAR PASSWORD =================
+    public function actualizarPassword($idUsuario, $password)
+    {
+        $sql = "UPDATE usuarios SET password = ? WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            password_hash($password, PASSWORD_DEFAULT),
+            $idUsuario
+        ]);
+    }
+
+
+
+
 }

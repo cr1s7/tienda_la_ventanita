@@ -1,4 +1,9 @@
 <?php
+// 🔐 CAMBIO: iniciar sesión
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once './Controllers/TipoDocumentoController.php';
 
 $tipoDocumentoController = new TipoDocumentoController();
@@ -30,7 +35,14 @@ $tiposDocumento = $tipoDocumentoController->listaTipoDocumento();
 
 <div class="container mt-5">
 
+   <?php if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == 1): ?>
+    <!-- Admin -->
     <a href="index.php?action=usuarios" class="btn btn-secondary mb-3">⬅ Volver</a>
+    <?php else: ?>
+        <!-- Registro desde login -->
+        <a href="index.php?action=login" class="btn btn-secondary mb-3">⬅ Volver</a>
+    <?php endif; ?>
+
 
     <div class="form-card shadow-sm">
 
@@ -95,14 +107,18 @@ $tiposDocumento = $tipoDocumentoController->listaTipoDocumento();
                     <input type="password" name="confirmPassword" class="form-control" required>
                 </div>
 
-                <!-- ROL -->
-                <div class="col-md-6 mb-3">
-                    <label class="fw-semibold">Rol del Usuario</label>
-                    <select name="idRol" class="form-select" required>
-                        <option value="2">Usuario</option>
-                        <option value="1">Administrador</option>
-                    </select>
-                </div>
+                <!-- 🔐 CAMBIO: ROL CONTROLADO POR SESIÓN -->
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == 1): ?>
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-semibold">Rol del Usuario</label>
+                        <select name="idRol" class="form-select" required>
+                            <option value="2">Usuario</option>
+                            <option value="1">Administrador</option>
+                        </select>
+                    </div>
+                <?php else: ?>
+                    <input type="hidden" name="idRol" value="2">
+                <?php endif; ?>
 
             </div>
 

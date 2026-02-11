@@ -1,17 +1,59 @@
 <?php
-require_once './Controllers/UserController.php';
-require_once './Controllers/TipoDocumentoController.php';
-require_once './Controllers/ProductoController.php';
-require_once './Controllers/CategoriaController.php';
-require_once './Controllers/MarcaController.php';
+require_once __DIR__ . '/Config/Database.php';
+require_once __DIR__ . '/Controllers/UserController.php';
+require_once __DIR__ . '/Controllers/TipoDocumentoController.php';
+require_once __DIR__ . '/Controllers/ProductoController.php';
+require_once __DIR__ . '/Controllers/CategoriaController.php';
+require_once __DIR__ . '/Controllers/MarcaController.php';
+require_once __DIR__ . '/Controllers/HomeController.php';
+require_once __DIR__ . '/Controllers/CarritoController.php';
+require_once __DIR__ . '/Controllers/ProductoController.php';
+require_once __DIR__ . '/Controllers/UnidadController.php';
 
+
+
+$database = new Database();
+$db = $database->getConnection();
+
+$productoController = new ProductoController();
+
+// Productos destacados
+$destacados = $productoController->destacados();
+
+$unidadController = new UnidadController();
 $userController = new UserController();
 $tipoDocumentoController = new TipoDocumentoController();
 $productoController = new ProductoController();
 $categoriaController = new CategoriaController();
 $marcaController = new MarcaController();
+$homeController = new HomeController();
+$carritoController = new CarritoController($db);
 
-$action = $_GET['action'] ?? 'login';
+
+$action = $_GET['action'] ?? 'home';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+function requireLogin()
+{
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php?action=login");
+        exit;
+    }
+}
+
+function requireAdmin()
+{
+    requireLogin();
+    
+    if ($_SESSION['user']['rol'] != 1) {
+        header("Location: index.php?action=dashboardUser");
+        exit;
+    }
+}
+
 
 switch ($action) {
 
@@ -31,34 +73,35 @@ switch ($action) {
 
     // ---------- LOGOUT ----------
     case 'logout':
-        session_start();
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Guardar nombre antes de destruir sesión
+        $nombre = $_SESSION['user']['nombre'] ?? 'Cliente';
+
         session_destroy();
-        header("Location: index.php?action=login");
+
+        session_start(); // Nueva sesión para mensaje flash
+
+        $_SESSION['mensaje_logout'] =
+            "Gracias por visitarnos <b>$nombre</b>, vuelve pronto 🏪";
+
+        header("Location: index.php?action=home");
         exit;
 
-    // ---------- REGISTRO PÚBLICO ----------
-    case 'register':
-        $tipos = $tipoDocumentoController->listaTipoDocumento();
-        include './Views/usuarios/insert_UserPublic.php';
-        break;
 
-    case 'registerSave':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $userController->insertUserPublic();
-        } else {
-            header("Location: index.php?action=login");
-            exit;
-        }
-        break;
 
     // ---------- DASHBOARD ----------
     case 'dashboard':
-        include './Views/Dashboard.php';
-        break;
+         include './Views/Dashboard.php';
+       break;
 
     case 'dashboardUser':
-        include './Views/DashboardUser.php';
+        $homeController->index();
         break;
+
 
     // ---------- USUARIOS ----------
     case 'usuarios':
@@ -114,29 +157,56 @@ switch ($action) {
 
     // ---------- PRODUCTOS ----------
     case 'productos':
+        requireAdmin();
         $productoController->listarProductos();
         break;
 
+
     case 'productoCrear':
-        include './Views/Productos/crear.php';
+        requireAdmin();
+        $productoController->crearForm();
         break;
 
     case 'productoGuardar':
+        requireAdmin();
         $productoController->guardarProducto();
         break;
 
-    case 'productoEditar':
-        $producto = $productoController->buscarProducto($_GET['id']);
-        include './Views/Productos/editar.php';
-        break;
 
     case 'productoActualizar':
+        requireAdmin();
         $productoController->actualizarProducto();
         break;
 
+    case 'productoEditar':
+        $controller = new ProductoController();
+        $controller->editarForm($_GET['id']);
+        break;
+
+
     case 'productoEliminar':
+        requireAdmin();
         $productoController->eliminarProducto($_GET['id']);
         break;
+        
+    case 'productosTienda':
+        $productoController->listarProductosFrontend();
+        break;
+
+    case 'tienda':
+        $productoController->tienda();
+        break;
+
+
+    case 'buscarProducto':
+    $productoController->buscarFrontend();
+    break;
+
+    case 'productoDetalle':
+    $productoController->detalle($_GET['id']);
+    break;
+
+
 
     // ---------- CATEGORÍAS ----------
     case 'categorias':
@@ -179,6 +249,49 @@ switch ($action) {
     case 'marcaEliminar':
         $marcaController->eliminar();
         break;
+
+
+    //----------- HOME ----------
+    case 'home':
+        $homeController->index();
+        break;
+
+    //----------- CARRITO ----------
+    case 'agregarCarrito':
+        $carritoController->agregar();
+        break;
+
+    case 'carrito':
+        $carritoController->index();
+        break;
+
+    case 'eliminarCarrito':
+        $carritoController->eliminar();
+        break;
+
+    
+    // ===== UNIDADES =====
+    case 'unidades':
+        $controller = new UnidadController();
+        $controller->index();
+        break;
+
+    case 'crearUnidad':
+        $controller = new UnidadController();
+        $controller->crear();
+        break;
+
+    case 'editarUnidad':
+        $controller = new UnidadController();
+        $controller->editar();
+        break;
+
+    case 'eliminarUnidad':
+        $controller = new UnidadController();
+        $controller->eliminar();
+        break;
+
+
 
     // ---------- 404 ----------
     default:

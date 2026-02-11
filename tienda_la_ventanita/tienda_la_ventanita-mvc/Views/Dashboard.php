@@ -113,6 +113,14 @@ $nombre = $_SESSION['user']['nombre'];
                 </div>
             </div>
 
+            <div class="col-md-4 mb-3">
+                <div class="card card-custom p-4 shadow-sm">
+                    <h4><i class="bi bi-cart-check-fill"></i>Unidades de Medida</h4>
+                    <p>Control de Unidades de Medida</p>
+                    <a href="index.php?action=unidades" class="btn btn-dark">Ver</a>
+                </div>
+            </div>
+
         </div>
 
         <!-- GRÁFICA -->

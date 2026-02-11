@@ -1,19 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Editar Unidad</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="Views/css/styles.css">
 
-<style>
-    body { background: #fffde7; }
-    .form-card {
-        background: #fff9c4;
-        padding: 2rem;
-        border-radius: 12px;
-        border: 1px solid #f0e68c;
-    }
-</style>
 </head>
 
 <body>

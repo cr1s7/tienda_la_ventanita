@@ -5,16 +5,7 @@
     <title>NUEVA CATEGORÍA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-    <style>
-    body { background: #fffde7; }
-    .form-card {
-        background: #fff9c4;
-        padding: 2rem;
-        border-radius: 12px;
-        border: 1px solid #f0e68c;
-    }
-</style>
+    <link rel="stylesheet" href="Views/css/styles.css">
 
 </head>
 <body>

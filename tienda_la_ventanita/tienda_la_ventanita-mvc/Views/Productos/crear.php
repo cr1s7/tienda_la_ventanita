@@ -4,16 +4,8 @@
 <meta charset="UTF-8">
 <title>Nuevo Producto</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="Views/css/styles.css">
 
-<style>
-    body { background: #fffde7; }
-    .form-card {
-        background: #fff9c4;
-        padding: 2rem;
-        border-radius: 12px;
-        border: 1px solid #f0e68c;
-    }
-</style>
 </head>
 
 <body>
@@ -49,10 +41,13 @@
 
             <label>Unidad de Medida</label>
             <select name="idUnidad_medida" class="form-select mb-3" required>
-                <?php foreach($unidades as $u): ?>
-                    <option value="<?= $u['idUnidad_medida'] ?>"><?= $u['nombre'] ?></option>
+                <?php foreach ($unidades as $u): ?>
+                    <option value="<?= $u['idUnidad'] ?>">
+                        <?= $u['nombre'] ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
+
 
             <label>Marca</label>
             <select name="idMarca" class="form-select mb-4" required>

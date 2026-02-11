@@ -1,41 +1,74 @@
 <?php
-require_once './Config/Database.php';
 
 class UnidadModel {
-    private $db;
 
-   public function __construct($db) 
-    {
+    private $conn;
+
+    public function __construct($db){
         $this->conn = $db;
     }
 
-    public function listar() {
-        $sql = "SELECT * FROM unidades";
-        return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    // LISTAR
+    public function listar(){
+
+        $sql = "SELECT *
+                FROM unidad_medida
+                ORDER BY nombre ASC";
+
+        return $this->conn
+            ->query($sql)
+            ->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function crear($nombre) {
-        $sql = "INSERT INTO unidades (nombre) VALUES (:nombre)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['nombre' => $nombre]);
+    // CREAR
+    public function crear($nombre){
+
+        $sql = "INSERT INTO unidad_medida(nombre)
+                VALUES(:nombre)";
+
+        $stmt = $this->conn->prepare($sql);
+
+        return $stmt->execute([
+            'nombre'=>$nombre
+        ]);
     }
 
-    public function buscar($id) {
-        $sql = "SELECT * FROM unidades WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['id' => $id]);
+    // BUSCAR
+    public function buscar($id){
+
+        $sql = "SELECT *
+                FROM unidad_medida
+                WHERE idUnidad = :id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editar($id, $nombre) {
-        $sql = "UPDATE unidades SET nombre = :nombre WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['nombre' => $nombre, 'id' => $id]);
+    // EDITAR
+    public function editar($id,$nombre){
+
+        $sql = "UPDATE unidad_medida
+                SET nombre = :nombre
+                WHERE idUnidad = :id";
+
+        $stmt = $this->conn->prepare($sql);
+
+        return $stmt->execute([
+            'nombre'=>$nombre,
+            'id'=>$id
+        ]);
     }
 
-    public function eliminar($id) {
-        $sql = "DELETE FROM unidades WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['id' => $id]);
+    // ELIMINAR
+    public function eliminar($id){
+
+        $sql = "DELETE FROM unidad_medida
+                WHERE idUnidad = :id";
+
+        $stmt = $this->conn->prepare($sql);
+
+        return $stmt->execute(['id'=>$id]);
     }
 }

@@ -25,13 +25,12 @@ class ProductoModel
             LEFT JOIN unidad_medida u ON p.idUnidad_medida = u.idUnidad
             LEFT JOIN marcas m ON p.idMarca = m.idMarca
             ORDER BY p.idProducto DESC
-    ";
+        ";
 
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function crear($data)
     {
@@ -50,20 +49,56 @@ class ProductoModel
         ]);
     }
 
-    public function buscar($id)
+    public function buscar($texto)
     {
-        $sql = "SELECT * FROM $this->table WHERE idProducto = ?";
+        $sql = "
+            SELECT 
+                p.*,
+                c.nombre AS categoria,
+                u.nombre AS unidad,
+                m.nombre AS marca
+            FROM productos p
+            LEFT JOIN categorias c 
+                ON p.idCategoria = c.idCategoria
+            LEFT JOIN unidad_medida u 
+                ON p.idUnidad_medida = u.idUnidad
+            LEFT JOIN marcas m 
+                ON p.idMarca = m.idMarca
+            WHERE p.nombre LIKE :texto
+            ORDER BY p.idProducto DESC
+        ";
+
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $texto = "%$texto%";
+
+        $stmt->bindParam(":texto", $texto, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
 
     public function actualizar($data)
     {
-        $sql = "UPDATE $this->table SET nombre=?, preUnitario=?, stock=?, foto=?, idCategoria=?, idUnidad_medida=?, idMarca=?
-                WHERE idProducto=?";
+        $sql = "UPDATE $this->table SET
+            nombre=?,
+            preUnitario=?,
+            stock=?,
+            foto=?,
+            idCategoria=?,
+            idUnidad_medida=?,
+            idMarca=?,
+            destacado=?
+            WHERE idProducto=?";
 
         $stmt = $this->conn->prepare($sql);
+
+        // ✅ mantener valor destacado
+        $destacado = isset($data['destacado']) ? 1 : 0;
+
         $stmt->execute([
             $data['nombre'],
             $data['preUnitario'],
@@ -72,9 +107,11 @@ class ProductoModel
             $data['idCategoria'],
             $data['idUnidad_medida'],
             $data['idMarca'],
+            $destacado,
             $data['idProducto']
         ]);
     }
+
 
     public function eliminar($id)
     {
@@ -104,4 +141,82 @@ public function getMarcas()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+public function buscarPorNombre($nombre)
+{
+    $stmt = $this->conn->prepare(
+        "SELECT * FROM productos WHERE nombre LIKE ?"
+    );
+    $stmt->execute(["%$nombre%"]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+public function listarPorCategoria($idCategoria)
+{
+    $sql = "
+        SELECT 
+            p.*,
+            c.nombre AS categoria,
+            u.nombre AS unidad,
+            m.nombre AS marca
+        FROM productos p
+        LEFT JOIN categorias c 
+            ON p.idCategoria = c.idCategoria
+        LEFT JOIN unidad_medida u 
+            ON p.idUnidad_medida = u.idUnidad
+        LEFT JOIN marcas m 
+            ON p.idMarca = m.idMarca
+        WHERE p.idCategoria = :idCategoria
+        ORDER BY p.idProducto DESC
+    ";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(":idCategoria", $idCategoria);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function obtenerDestacados()
+{
+    $sql = "
+        SELECT 
+            p.*,
+            c.nombre AS categoria,
+            u.nombre AS unidad,
+            m.nombre AS marca
+        FROM productos p
+        LEFT JOIN categorias c 
+            ON p.idCategoria = c.idCategoria
+        LEFT JOIN unidad_medida u 
+            ON p.idUnidad_medida = u.idUnidad
+        LEFT JOIN marcas m 
+            ON p.idMarca = m.idMarca
+        WHERE p.destacado = 1
+        ORDER BY p.idProducto DESC
+        LIMIT 8
+    ";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function obtenerPorId($id)
+{
+    $sql = "SELECT p.*, c.nombre AS categoria
+            FROM productos p
+            LEFT JOIN categorias c ON p.idCategoria = c.idCategoria
+            WHERE p.idProducto = :id";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
+
+}
+

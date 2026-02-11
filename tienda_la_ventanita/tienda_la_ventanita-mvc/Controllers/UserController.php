@@ -17,7 +17,6 @@ class UserController
 
     public function login()
     {
-           
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -45,29 +44,36 @@ class UserController
         include './Views/login.php';
     }
 
-
-
     /* ================= REGISTRO ================= */
     public function insertUser()
-    {
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->model->insertar($_POST);
-            header("Location: index.php?action=usuarios");
-            exit;
-        }
-
-
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
 
-    public function insertUserPublic()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->model->insertar($_POST);
-            header("Location: index.php?action=login");
-            exit;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // 🔒 Blindaje de rol
+        if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == 1) {
+            $_POST['idRol'] = $_POST['idRol'] ?? 2;
+        } else {
+            $_POST['idRol'] = 2;
         }
+
+        // 🔐 VALIDAR EMAIL ÚNICO
+        if ($this->model->buscarPorEmail($_POST['email'])) {
+            $error = "Este correo ya está registrado";
+            $tipos = $this->tipoModel->listar();
+            include './Views/usuarios/insert_User.php';
+            return;
+        }
+
+        $this->model->insertar($_POST);
+        header("Location: index.php?action=usuarios");
+        exit;
     }
+}
+
 
     /* ================= USUARIOS ================= */
     public function listarUsuarios()
@@ -75,6 +81,7 @@ class UserController
         $usuarios = $this->model->listar();
         include './Views/usuarios/listar.php';
     }
+
     public function editarUsuario($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -87,8 +94,6 @@ class UserController
             include './Views/usuarios/edit_User.php';
         }
     }
-
-
 
     public function eliminarUsuario($id)
     {
@@ -121,14 +126,11 @@ class UserController
             exit;
         }
 
-        // ✅ SOLO ACTUALIZA PASSWORD
         $this->model->actualizarPassword($userId, $nueva);
 
         header("Location: index.php?action=dashboard");
         exit;
     }
-
-
 
     /* ================= LOGOUT ================= */
     public function logout()
