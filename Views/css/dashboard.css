@@ -1,0 +1,126 @@
+/* ===================================== */
+/* 🌟 LA VENTANITA PRO - YELLOW EDITION */
+/* ===================================== */
+
+body {
+    background: #fff9e6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1f1f1f, #2a2a2a);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+}
+
+.sidebar h4 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffd54f;
+}
+
+.sidebar a {
+    color: #f5f5f5;
+    padding: 14px 25px;
+    display: block;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.05);
+    border-left: 4px solid #f4b400;
+    padding-left: 30px;
+}
+
+.sidebar a.text-danger {
+    color: #ffd54f !important;
+}
+
+.sidebar a.text-danger:hover {
+    border-left: 4px solid #ffd54f;
+}
+
+/* ================= CONTENIDO ================= */
+
+.content {
+    margin-left: 260px;
+    padding: 40px;
+}
+
+.content h2 {
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+/* ================= TARJETAS ================= */
+
+.card-custom {
+    border-radius: 18px;
+    border: none;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.card-custom h4 {
+    font-weight: 600;
+    color: #f4b400;
+}
+
+.card-custom p {
+    color: #555;
+}
+
+.card-custom:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* ================= BOTONES ================= */
+
+.btn-dark {
+    background: #f4b400;
+    color: #1f1f1f;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+    background: #e0a800;
+    transform: scale(1.05);
+}
+
+/* ================= CARD GRÁFICA ================= */
+
+.card {
+    border-radius: 18px;
+    border: none;
+}
+
+.card-body h4 {
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f4b400;
+    border-radius: 10px;
+}

@@ -1,0 +1,138 @@
+/* ===== FONDO GENERAL LA VENTANITA ===== */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #FFFDF5, #FFF3C4);
+}
+
+/* ===== TITULO PRINCIPAL GRANDE ===== */
+.titulo-ventanita {
+    text-align: center;
+    font-size: 28px;        /* más grande */
+    font-weight: 800;       /* más fuerte */
+    color: #B8860B;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* ===== WRAPPER ===== */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== CARD LA VENTANITA PRO ===== */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #FFF8C6;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #FFE082;
+    box-shadow: 0 15px 35px rgba(255,193,7,0.25);
+    transition: all 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(255,193,7,0.35);
+}
+
+/* ===== TITULOS ===== */
+.auth-card h3 {
+    font-weight: 700;
+    color: #B8860B;
+}
+
+.auth-card h5 {
+    font-weight: 500;
+    color: #8D6E00;
+}
+
+/* ===== INPUT PERSONALIZADO ===== */
+.input-ventanita {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #FFE082;
+    background: #FFFDF3;
+    transition: 0.3s;
+    outline: none;
+}
+
+.input-ventanita:focus {
+    border-color: #FFC107;
+    box-shadow: 0 0 0 3px rgba(255,193,7,.25);
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+.btn-ventanita {
+    width: 100%;
+    background: linear-gradient(135deg, #FFD54F, #FFC107);
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 700;
+    color: #212529;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-ventanita:hover {
+    background: linear-gradient(135deg, #FFC107, #E0A800);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255,193,7,0.35);
+}
+
+/* ===== BOTÓN SECUNDARIO ===== */
+.btn-ventanita-sec {
+    display: inline-block;
+    background: #FFF3CD;
+    color: #8D6E00;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #FFE082;
+    transition: 0.3s;
+}
+
+.btn-ventanita-sec:hover {
+    background: #FFE082;
+}
+
+/* ===== LINKS ===== */
+.link-ventanita {
+    color: #B8860B;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.link-ventanita:hover {
+    text-decoration: underline;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress {
+    height: 8px;
+    border-radius: 20px;
+    background: #FFF3CD;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #FFD54F, #FFC107);
+}
+
+/* ===== REGLAS PASSWORD ===== */
+.rules {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.valid { color: #2e7d32; }
+.invalid { color: #c62828; }

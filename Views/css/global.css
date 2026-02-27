@@ -1,0 +1,494 @@
+/* =========================================================
+   🌟 LA VENTANITA PRO - YELLOW PREMIUM GLOBAL
+========================================================= */
+
+body{
+    background:#fff8e1;
+    font-family:"Poppins",sans-serif;
+    margin:0;
+    padding:0;
+    color:#333;
+}
+
+/* =========================================================
+   🔝 NAVBAR
+========================================================= */
+
+.btn-logout{
+    background:#1f1f1f;
+    color:#fff;
+    border-radius:50px;
+    padding:8px 18px;
+    font-weight:500;
+    transition:.3s ease;
+}
+
+.btn-logout:hover{
+    background:#f4b400;
+    color:#1f1f1f;
+}
+
+/* 🔴 Punto carrito elegante */
+.cart-dot{
+    width:10px;
+    height:10px;
+    background:#e53935;
+    border-radius:50%;
+    position:absolute;
+    top:6px;
+    right:10px;
+    display:none;
+}
+
+/* =========================================================
+   🔎 BUSCADOR / CATEGORÍAS
+========================================================= */
+
+.buscador{
+    max-width:500px;
+    margin:auto;
+}
+
+.buscador input{
+    border-radius:50px;
+    padding-left:20px;
+    border:1px solid #f4d03f;
+}
+
+.menu-categorias{
+    background:#fff3cd;
+}
+
+.menu-categorias a{
+    color:#333;
+    font-weight:500;
+    text-decoration:none;
+    padding:12px 18px;
+    display:inline-block;
+    transition:.3s ease;
+}
+
+.menu-categorias a:hover{
+    color:#f4b400;
+}
+
+.menu-categorias .activo{
+    border-bottom:3px solid #f4b400;
+    color:#f4b400;
+}
+
+/* =========================================================
+   🎞️ CARRUSEL DESTACADOS PRO
+========================================================= */
+
+.carrusel-wrapper{
+    overflow:hidden;
+    position:relative;
+    width:100%;
+    margin:auto;
+}
+
+.carrusel-track{
+    display:flex;
+    gap:25px;
+    width:max-content;
+    animation:scrollCarrusel 40s linear infinite;
+}
+
+.destacado-card{
+    min-width:220px;
+    border:2px solid #f4d03f;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.4s ease;
+    background:white;
+}
+
+.destacado-card img{
+    height:180px;
+    object-fit:cover;
+}
+
+.destacado-card .card-body{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:160px;
+}
+
+.destacado-card:hover{
+    transform:scale(1.08);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+.destacado-card.centro{
+    transform:scale(1.15);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+@keyframes scrollCarrusel{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+}
+
+/* =========================================================
+   🛒 TOAST PRO
+========================================================= */
+
+.toast-carrito{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    color:white;
+    padding:14px 20px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    font-weight:600;
+    z-index:9999;
+    animation:fadeInOut 3s ease forwards;
+}
+
+.toast-ok{ background:#43a047; }
+.toast-error{ background:#e53935; }
+
+@keyframes fadeInOut{
+    0%{opacity:0; transform:translateY(20px);}
+    10%{opacity:1; transform:translateY(0);}
+    90%{opacity:1;}
+    100%{opacity:0; transform:translateY(20px);}
+}
+
+/* =========================================================
+   🧾 FORMULARIOS
+========================================================= */
+
+.form-container{
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border:1px solid #f4e19c;
+}
+
+label{
+    font-weight:600;
+    color:#5C3B1E;
+}
+
+input,select{
+    border-radius:10px !important;
+    border:1px solid #f4d03f !important;
+}
+
+input:focus,select:focus{
+    box-shadow:0 0 8px rgba(244,180,0,.4) !important;
+    border-color:#f4b400 !important;
+}
+
+.btn-primary-custom{
+    background:#f4b400;
+    border:none;
+    width:100%;
+    font-weight:600;
+    padding:12px;
+    border-radius:12px;
+    transition:.3s ease;
+}
+
+.btn-primary-custom:hover{
+    background:#e0a800;
+    transform:scale(1.05);
+}
+
+/* =========================================================
+   🛒 CARRITO PRO MARKETPLACE
+========================================================= */
+
+.carrito-wrapper{
+    max-width:1200px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:25px;
+}
+
+.carrito-card,
+.resumen-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    border:1px solid #f4e19c;
+}
+
+.carrito-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+    border-top:1px solid #f1f1f1;
+}
+
+.carrito-img{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    background:#fff8e1;
+    border-radius:12px;
+    padding:10px;
+}
+
+.carrito-precio{
+    font-size:20px;
+    font-weight:700;
+    color:#1f1f1f;
+}
+
+.cantidad-control{
+    display:flex;
+    align-items:center;
+    border:1px solid #f4d03f;
+    border-radius:30px;
+    width:120px;
+    justify-content:space-between;
+    padding:5px 10px;
+}
+
+.btn-eliminar:hover{
+    color:#e53935;
+}
+
+.btn-continuar{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border-radius:12px;
+    border:none;
+    font-weight:600;
+    background:#f4b400;
+    color:#1f1f1f;
+    transition:.3s ease;
+}
+
+.btn-continuar:hover{
+    background:#e0a800;
+    transform:scale(1.05);
+}
+
+/* =========================================================
+   📱 RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+    .carrito-wrapper{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   🏦 OVERLAY BANCO PRO
+========================================================= */
+
+#bankOverlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.bank-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:350px;
+    box-shadow:0 0 40px rgba(0,0,0,0.3);
+    border:2px solid #f4d03f;
+}
+
+/* ================= ADMIN TABLA PRO ================= */
+
+.titulo-seccion{
+    color:#1f1f1f;
+    font-weight:700;
+}
+
+.buscador-admin{
+    border-radius:12px;
+    border:1px solid #f4d03f !important;
+    padding:10px 15px;
+}
+
+.buscador-admin:focus{
+    box-shadow:0 0 8px rgba(244,180,0,.4) !important;
+    border-color:#f4b400 !important;
+}
+
+/* Badges Rol */
+
+.badge-rol{
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.badge-rol.admin{
+    background:#f4b400;
+    color:#1f1f1f;
+}
+
+.badge-rol.user{
+    background:#fff3cd;
+    color:#333;
+}
+
+
+/* ===== FONDO GENERAL ===== */
+.fondo-pro {
+    background: linear-gradient(135deg, #fff9c4, #fdd835, #fbc02d);
+    min-height: 100vh;
+}
+
+/* ===== TITULO ===== */
+.titulo-pro {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ===== CARD PRO ===== */
+.card-custom {
+    background: linear-gradient(145deg, #fffde7, #fff176);
+    border-radius: 18px;
+    border: 1px solid #fbc02d;
+}
+
+/* ===== BOTONES ===== */
+.btn-custom {
+    background: linear-gradient(145deg, #fdd835, #fbc02d);
+    border: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(145deg, #fbc02d, #f9a825);
+}
+
+/* Volver */
+.btn-volver {
+    background: #fff8c6;
+    border: 1px solid #e6c200;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.btn-volver:hover {
+    background: #ffe066;
+}
+
+/* Editar */
+.btn-editar {
+    background: #ffec99;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Eliminar */
+.btn-eliminar-pro {
+    background: #e53935;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* Tabla */
+.tabla-pro thead {
+    background: #fdd835;
+}
+
+/* Input */
+.input-pro {
+    border-radius: 10px;
+    border: 1px solid #fbc02d;
+}
+
+/* Imagen */
+.img-pro {
+    border-radius: 8px;
+}
+
+/* Toast */
+.toast-pro-success {
+    background: #43a047;
+    color: white;
+}
+
+.toast-pro-error {
+    background: #e53935;
+    color: white;
+}
+
+/* ===== FORZAR TABLA PRO SIN ESTILO BOOTSTRAP ===== */
+
+.tabla-pro {
+    background: transparent !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tabla-pro thead {
+    background: linear-gradient(90deg, #fdd835, #fbc02d) !important;
+    color: #1f1f1f;
+}
+
+.tabla-pro th {
+    background: transparent !important;
+    padding: 16px;
+    font-weight: 700;
+}
+
+.tabla-pro td {
+    background: rgba(255,255,255,0.6) !important;
+    padding: 14px;
+    backdrop-filter: blur(4px);
+}
+
+.tabla-pro tbody tr:nth-child(even) td {
+    background: rgba(255,255,255,0.8) !important;
+}
+
+.tabla-pro tbody tr:hover td {
+    background: #fff3cd !important;
+    transition: 0.2s ease;
+}
+
+/* 🔥 ARREGLO ANCHO TABLA */
+
+.tabla-pro {
+    width: 100% !important;
+    display: table;
+}
+
+.card-custom {
+    width: 100%;
+}

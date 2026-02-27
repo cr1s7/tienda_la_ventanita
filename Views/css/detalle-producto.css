@@ -1,0 +1,151 @@
+/* =========================================================
+   🛍️ DETALLE PRODUCTO SUPERMERCADO
+========================================================= */
+
+/* IMAGEN */
+.detalle-img-box{
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    text-align:center;
+    height:420px;              /* 🔥 Alto fijo */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.detalle-img-box img{
+    width:100%;                /* 🔥 Ocupa todo */
+    height:100%;
+    object-fit:contain;        /* No se deforma */
+}
+
+
+
+/* TÍTULO */
+.producto-titulo{
+    font-weight:700;
+    color:#333;
+}
+
+/* SKU */
+.sku{
+    font-size:.85rem;
+    color:#888;
+}
+
+
+/* DESCUENTO */
+.badge-descuento{
+    background:#212529;
+    color:white;
+    padding:4px 8px;
+    font-size:.8rem;
+    border-radius:6px;
+}
+
+
+/* PRECIO */
+.precio{
+    color:#f57c00;
+    font-weight:800;
+    margin-top:10px;
+}
+
+.precio-old{
+    text-decoration:line-through;
+    color:#888;
+    font-size:.9rem;
+}
+
+
+/* STOCK */
+.stock{
+    color:#d32f2f;
+    font-weight:600;
+    font-size:.9rem;
+}
+
+
+/* LINK */
+.ver-detalles{
+    font-size:.9rem;
+    color:#0d6efd;
+    text-decoration:none;
+}
+
+.ver-detalles:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   🛒 BOX COMPRA
+========================================================= */
+
+.box-compra{
+    background:#f8f9fa;
+    border-radius:12px;
+    padding:20px;
+    border:1px solid #ddd;
+}
+
+.box-compra h6{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.box-compra p{
+    font-size:.9rem;
+    margin-bottom:6px;
+}
+
+
+/* BOTÓN */
+.btn-agregar{
+    background:#f57c00;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    font-weight:700;
+    margin-top:10px;
+    transition:.2s ease;
+}
+
+.btn-agregar:hover{
+    background:#e65100;
+}
+
+/* =========================================================
+   🧴 RELACIONADOS
+========================================================= */
+
+.card-relacionado{
+    border-radius:12px;
+    overflow:hidden;
+    transition:.3s ease;
+}
+
+.card-relacionado img{
+    height:180px;
+    object-fit:contain;
+    padding:10px;
+}
+
+.card-relacionado:hover{
+    transform:translateY(-5px);
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+
+.precio-rel{
+    color:#f57c00;
+    font-weight:700;
+}
+
+.descripcion-producto {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}

@@ -1,0 +1,105 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(180deg, #FFFDE7 0%, #FFF3B0 100%);
+}
+/* ===== WRAPPER CENTRADO ===== */
+.login-wrapper{
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* ===== CARD LOGIN ===== */
+.login-card{
+    background:#FFF8C6;
+    padding:40px;
+    width:100%;
+    max-width:400px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(255,193,7,0.25);
+    border:1px solid #FFE082;
+    transition: all 0.3s ease;
+}
+
+/* efecto suave al pasar el mouse */
+.login-card:hover{
+    transform: translateY(-4px);
+    box-shadow:0 18px 40px rgba(255,193,7,0.35);
+}
+
+/* ===== TITULOS ===== */
+.login-card h3{
+    font-weight:700;
+    color:#B8860B;
+}
+
+.login-card h5{
+    font-weight:500;
+    color:#8D6E00;
+}
+
+/* ===== INPUTS ===== */
+.login-card .form-control{
+    border-radius:10px;
+    padding:12px;
+    font-size:14px;
+    border:1px solid #FFE082;
+    transition: all 0.2s ease;
+}
+
+.login-card .form-control:focus{
+    border-color:#FFC107;
+    box-shadow:0 0 0 0.2rem rgba(255,193,7,.25);
+}
+
+/* ===== BOTÓN ===== */
+.login-card .btn-primary{
+    background:#FFC107;
+    border:none;
+    font-weight:600;
+    border-radius:30px;
+    padding:10px;
+    transition: all 0.3s ease;
+}
+
+.login-card .btn-primary:hover{
+    background:#E0A800;
+    transform: scale(1.03);
+}
+
+/* ===== BOTÓN CREAR CUENTA - LA VENTANITA ===== */
+.btn-crear-ventanita {
+    background: linear-gradient(135deg, #FFD54F, #FFC107);
+    color: #212529;
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    padding: 12px;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-crear-ventanita:hover {
+    background: linear-gradient(135deg, #FFC107, #E0A800);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,193,7,0.35);
+    color: #212529;
+}
+
+/* ===== LINKS ===== */
+.login-card a{
+    font-size:14px;
+    text-decoration:none;
+    color:#B8860B;
+    font-weight:500;
+}
+
+.login-card a:hover{
+    text-decoration:underline;
+}
