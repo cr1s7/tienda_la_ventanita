@@ -10,13 +10,14 @@ class AuthGoogleController {
 
         $this->client = new Google_Client();
 
-        $clientID = $_ENV['GOOGLE_CLIENT_ID'];
-        $clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'];
+        $clientID = $_ENV['GOOGLE_CLIENT_ID'] ?? null;
+        $clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'] ?? null;
+        $redirectUri = $_ENV['GOOGLE_REDIRECT_URI'] ?? null;
 
-        $this->client->setRedirectUri(
-            "http://localhost/tienda_la_ventanita/tienda_la_ventanita-mvc/index.php?action=googleCallback"
-        );
-
+        // 🔴 ESTO FALTABA
+        $this->client->setClientId($clientID);
+        $this->client->setClientSecret($clientSecret);
+        $this->client->setRedirectUri($redirectUri);
 
         $this->client->addScope("email");
         $this->client->addScope("profile");
